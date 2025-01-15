@@ -1,0 +1,24 @@
+.letterBtn {
+    margin: 10px;
+    height: 30px;
+    width: 30px;
+}
+body {
+    text-align: center;
+}
+button:hover{
+    cursor: pointer;
+    background-color: #751818;
+    border: 1px solid #ccc;
+    color: #ccc;
+}
+.letterSpace {
+    display: inline;
+    margin-top: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 30px;
+    width: 30px;
+    
+}
+
