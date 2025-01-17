@@ -25,10 +25,13 @@ button:hover{
     height: 30px;
     width: 30px;
 }
-#startBtn{
-    display: none;
+#startBtn, #hintBtn{
     background-color: aqua;
     color: #751818;
     justify-content: center;
 }
+#startBtn{
+    display: none;
+}
+
 

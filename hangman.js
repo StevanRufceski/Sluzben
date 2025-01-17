@@ -1,6 +1,7 @@
 let correctLetters = [];
 let wrongLetters = [];
 let lostLives = 0;
+let numberOfUnguessedLetters = 0;
 // ----- functions -----
 function fireLetter(letter){
         let firedLetter = document.createElement('div');
@@ -12,18 +13,26 @@ function fireLetter(letter){
             document.getElementById(`firedLettersDiv`).appendChild(firedLetter);
         }
     }
-function finishTheGame (lostLives){
+function evaluateTheGame (lostLives){
     if (lostLives > 2){
         alert(`You lost the game. The film was
             ${randomFilmName}`)
-        for (i=0; i<document.getElementsByClassName('letterBtn').length; i++){
-            document.getElementsByClassName('letterBtn')[i].disabled = true;
-        }
-        document.getElementById(`startBtn`).style.display = 'inline';
-        for (let i = 0; i < randomFilmName.length; i++) {
-            if (document.getElementsByClassName(`letterSpace`)[i].textContent != " ") {
-                document.getElementsByClassName(`letterSpace`)[i].textContent = randomFilmName[i];
-            }
+        finishTheGame();
+    } else {
+        alert(`CONGRATULATIONS!!! You win the game. The film was
+            ${randomFilmName}`)
+        finishTheGame();
+    }
+}
+function finishTheGame(){
+    for (i=0; i<document.getElementsByClassName('letterBtn').length; i++){
+        document.getElementsByClassName('letterBtn')[i].disabled = true;
+        document.getElementById(`hintBtn`).style.display = 'none';
+    }
+    document.getElementById(`startBtn`).style.display = 'inline';
+    for (let i = 0; i < randomFilmName.length; i++) {
+        if (document.getElementsByClassName(`letterSpace`)[i].textContent != " ") {
+            document.getElementsByClassName(`letterSpace`)[i].textContent = randomFilmName[i];
         }
     }
 }
@@ -44,8 +53,10 @@ function startNewGame(){
         letterSpace.className = 'letterSpace';
         if (randomFilmName.charCodeAt(i) != 32) {
             letterSpace.textContent = "-";
+            numberOfUnguessedLetters ++;
         }
     }
+    console.log(numberOfUnguessedLetters);
 }
     // ------- select random film name ------------
 let filmNames = [`LOCK STOCK AND TWO SMOKING BARRELS`, `SNATCH`, `THE GOOD THE BAD AND THE UGLY`, `THE LION KING`];
@@ -71,7 +82,11 @@ for (let i = 0; i < document.getElementsByClassName(`letterBtn`).length; i++) {
                 if (randomFilmName[j] === theLetter[i].textContent) {
                     document.getElementsByClassName(`letterSpace`)[j].textContent = theLetter[i].textContent
                     correctLetters.push(theLetter[i])
+                    numberOfUnguessedLetters = numberOfUnguessedLetters - 1;
                 }
+            }
+            if (numberOfUnguessedLetters === 0) {
+                evaluateTheGame(lostLives);
             }
         } else {
             wrongLetters.push(theLetter[i])
@@ -82,11 +97,44 @@ for (let i = 0; i < document.getElementsByClassName(`letterBtn`).length; i++) {
                 alert(`you lost ${lostLives} lives!`)
             } else {
                 alert(`you lost ${lostLives} lives!`)
-                finishTheGame(lostLives);
+                evaluateTheGame(lostLives);
             }
         }
     })
 }
+// ------ shoot a hint -------- da ne raboti ako ima samo edno pole nepoznato !!!!!!!!!!!!!
+let hintArray = []
+let hintBtn = document.getElementById(`hintBtn`);
+hintBtn.addEventListener("click", function() {
+    for (i=0; i<randomFilmName.length; i++) {
+        let j = i - 1;
+        if ((correctLetters.map(element => element.textContent).includes(randomFilmName[i])!=true)&&(randomFilmName[i]!=" ")){
+            hintArray.push(randomFilmName[i]);
+        }
+    }
+    const randomHint = Math.floor(Math.random()*hintArray.length);
+    const randomHintLetter = hintArray[randomHint]
+    console.log(randomHintLetter)
+    for (j = 0; j < randomFilmName.length; j++){
+        if (randomFilmName[j] === randomHintLetter.textContent) {
+            document.getElementsByClassName(`letterSpace`)[j].textContent = randomHintLetter.textContent
+            correctLetters.push(randomHintLetter)
+            numberOfUnguessedLetters = numberOfUnguessedLetters - 1;
+        }
+    }
+
+})
+
+
+        
+    
+
+
+
+
+
+
+
 
 
 
