@@ -33,5 +33,15 @@ button:hover{
 #startBtn{
     display: none;
 }
+#popupDiv {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    height: 500px;
+    width: 100%;
+    background-color: white;
+}
+
+
 
 

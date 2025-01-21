@@ -8,13 +8,27 @@
 </head>
 <body>
     <h1>Hangman</h1>
+    <div id="popupDiv">
+        <form>
+            <p>Choose the subject of the game:</p>
+            <input type="radio" name="title" id="film" class="title">
+            <label for="film">film&nbsp;&nbsp;&nbsp;</label>
+            </nbsp></nbsp>
+            <input type="radio" name="title" id="music" class="title">
+            <label for="music">music</label>
+            <br><br>
+            <input type="button" id="subjectBtn" value=" OK "></input>
+            <br><br>
+        </form>
+    </div>
+    <br>
     <h3>
-        <div>Use alphabet below to guess the name of a film, or click hint to get a clue.</div>
+        <div>Use alphabet below to guess the name of a title, or click hint to get a clue.</div>
         <br>
         <button id="startBtn">Start new game?</button>
         <br>
     </h3>
-    <div id="filmName"></div>
+    <div id="titleName"></div>
     <br><br>
     <div id="firedLettersDiv">Fired letters:
     </div>
