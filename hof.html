@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOF</title>
+    <link rel="stylesheet" href="hof.css">
+</head>
+<body>
+    <form>
+        <label for="filter">Select how to filter the list of students:</label><br><br>
+        <select name="filter" id="filter" required>
+            <option value="all">All students</option>
+            <option value="firstFilter">All students with an average grade higher than 3</option>
+            <option value="secondFilter">All female student names with an average grade of 5</option>
+            <option value="thirdFilter">All male student full names who live in Skopje and are over 18 years old</option>
+            <option value="fourthFilter">The average grades of all female students over the age of 24</option>
+            <option value="fifthFilter">All male students with a name starting with B and average grade over 2</option>
+        </select><br><br>
+        <button id="filterBtn">Show filtered list of students</button><br><br>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>City</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Average grade</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script src="hof.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+body{
+    text-align: center;
+}
+table, tr, th, td{
+    border: solid 1px black;
+}
+table {
+    display: none;
+    width: fit-content;
+    justify-self: center;
+}
+td {
+    min-width: 150px;
+}
